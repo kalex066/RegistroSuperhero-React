@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #0e1e4d;
+  background-image:
+    radial-gradient(circle, rgba(252, 236, 33, 0.15) 1.5px, transparent 1.5px),
+    linear-gradient(180deg, #0e1e4d 0%, #14257a 60%, #0a1230 100%);
+  background-size: 22px 22px, 100% 100%;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.app-container {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Rayo ZAP animado */
+@keyframes zapPulse {
+  0%, 100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 2px rgba(252, 236, 33, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(252, 236, 33, 0.9));
+  }
+}
+
+.zap-bolt {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  width: 70px;
+  height: 100px;
+  transform: rotate(12deg);
+  z-index: 0;
+  animation: zapPulse 1.6s ease-in-out infinite;
+}
+
+/* Skyline de ciudad */
+.city-skyline {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Header */
+.header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(252, 236, 33, 0.25) 0%, transparent 70%);
+  z-index: -1;
+}
+
+.header h1 {
+  color: #FCEC21;
+  font-size: 2rem;
+  text-shadow: 2px 2px 0 #E62429;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #ffffff;
+  opacity: 0.85;
+}
+
+/* Lista de héroes */
+.hero-list {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.hero-list h2 {
+  color: #FCEC21;
+  text-shadow: 1px 1px 0 #E62429;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.hero-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 3px solid #0E3EE0;
+  box-shadow: 0 0 15px rgba(252, 236, 33, 0.4);
+}
+
+.hero-icon {
+  font-size: 2rem;
+}
+
+.hero-card h3 {
+  color: #14257a;
+  margin: 8px 0 4px;
+}
+
+.hero-card p {
+  color: #555;
+  font-size: 0.85rem;
+  word-break: break-word;
+}
