@@ -48,11 +48,22 @@ const Form = ({ agregarSuperheroe }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        agregarSuperheroe(form.nombre, form.apellido, form.email, form.password);
-        setMensajeExito(`¡Superhéroe registrado!  ${form.nombre} ${form.apellido} se ha unido a la liga.`);
+
+        const nuevoHeroe = {
+        id: Date.now(),
+        nombre: form.nombre,
+        apellido: form.apellido,
+        email: form.email,
+        password: form.password
+        };
+
+    // Enviar el objeto al componente padre
+        agregarSuperheroe(nuevoHeroe); 
+    
+        setMensajeExito(`¡Superhéroe registrado! ${form.nombre} ${form.apellido} se ha unido a la liga.`);
         setForm({ nombre: "", apellido: "", email: "", password: "", confirmPassword: "" });
         setTimeout(() => setMensajeExito(''), 3000);
-    };
+};
 
     return (
         <>

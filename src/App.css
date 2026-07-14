@@ -96,34 +96,75 @@ body {
 .hero-list h2 {
   color: #FCEC21;
   text-shadow: 1px 1px 0 #E62429;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero-count {
+  background: #E62429;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 9px;
+  border-radius: 10px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
   margin-top: 16px;
+}
+
+@keyframes cardIn {
+  0% {
+    transform: translateY(12px) scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 .hero-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 16px;
-  border: 3px solid #0E3EE0;
-  box-shadow: 0 0 15px rgba(252, 236, 33, 0.4);
+  border: 2px solid #0E3EE0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: cardIn 0.4s ease-out both;
 }
 
-.hero-icon {
-  font-size: 2rem;
+.hero-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 auto 8px;
 }
 
-.hero-card h3 {
+.avatar-0 { background: linear-gradient(135deg, #0E3EE0, #14257a); color: #FCEC21; }
+.avatar-1 { background: linear-gradient(135deg, #E62429, #8a1216); color: #FCEC21; }
+.avatar-2 { background: linear-gradient(135deg, #FCEC21, #E5B800); color: #14257a; }
+.avatar-3 { background: linear-gradient(135deg, #1D9E75, #0F6E56); color: #ffffff; }
+
+.hero-name {
   color: #14257a;
-  margin: 8px 0 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0;
 }
 
-.hero-card p {
-  color: #555;
-  font-size: 0.85rem;
+.hero-email {
+  color: #888;
+  font-size: 0.75rem;
+  margin: 4px 0 0;
   word-break: break-word;
 }

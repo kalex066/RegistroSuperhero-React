@@ -3,18 +3,11 @@ import Form from './components/form/form';
 import './App.css';
 
 function App() {
-  const [superheroes, setSuperheroes] = useState([]);
+  const [heroes, setHeroes] = useState([]);
   const [enviado, setEnviado] = useState(false);
 
-  const agregarSuperheroe = (nombre, apellido, email, password) => {
-    const nuevoSuperheroe = {
-      id: Date.now(), 
-      nombre,
-      apellido,
-      email,
-      password
-    };
-    setSuperheroes((prev) => [...prev, nuevoSuperheroe]);
+  const agregarHeroe = (nuevoHeroe) => {
+    setHeroes((prev) => [...prev, nuevoHeroe]);
     setEnviado(true);
   };
 
@@ -35,21 +28,35 @@ function App() {
             ? '🛡️ ¡Bienvenido a la Liga de la Justicia!'
             : '⚡ Registro de Superhéroes'}
         </h1>
+        <p className="subtitle">
+          {enviado
+            ? `Ya tienes ${heroes.length} héroe(s) registrado(s)`
+            : 'Únete y protege la ciudad'}
+        </p>
       </header>
 
-      <Form agregarSuperheroe={agregarSuperheroe}/>
+      <Form agregarSuperheroe={agregarHeroe} />
 
-      {superheroes.length > 0 && (
+      {heroes.length > 0 && (
         <section className="hero-list">
-          <h2>Héroes Registrados</h2>
+          <h2>
+            Héroes Registrados <span className="hero-count">{heroes.length}</span>
+          </h2>
           <div className="hero-grid">
-            {superheroes.map((superheroe) => (
-              <div className="hero-card" key={superheroe.id}>
-                <div className="hero-icon">🦸</div>
-                <h3>
-                  {superheroe.nombre} {superheroe.apellido}
-                </h3>
-                <p>{superheroe.email}</p>
+            {heroes.map((hero, index) => (
+              <div
+                className="hero-card"
+                key={hero.id}
+                style={{ animationDelay: `${index * 0.08}s` }}
+              >
+                <div className={`hero-avatar avatar-${index % 4}`}>
+                  {hero.nombre.charAt(0)}
+                  {hero.apellido.charAt(0)}
+                </div>
+                <p className="hero-name">
+                  {hero.nombre} {hero.apellido}
+                </p>
+                <p className="hero-email">{hero.email}</p>
               </div>
             ))}
           </div>
@@ -62,20 +69,20 @@ function App() {
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <rect x="0" y="40" width="60" height="100" fill="#0a1230" />
-        <rect x="70" y="20" width="50" height="150" fill="#0a1230" />
-        <rect x="130" y="55" width="40" height="95" fill="#0a1230" />
-        <rect x="180" y="10" width="55" height="180" fill="#0a1230" />
-        <rect x="245" y="45" width="45" height="175" fill="#0a1230" />
-        <rect x="300" y="30" width="60" height="190" fill="#0a1230" />
-        <rect x="370" y="60" width="40" height="160" fill="#0a1230" />
+        <rect x="0" y="40" width="60" height="80" fill="#0a1230" />
+        <rect x="70" y="20" width="50" height="100" fill="#0a1230" />
+        <rect x="130" y="55" width="40" height="65" fill="#0a1230" />
+        <rect x="180" y="10" width="55" height="110" fill="#0a1230" />
+        <rect x="245" y="45" width="45" height="75" fill="#0a1230" />
+        <rect x="300" y="30" width="60" height="90" fill="#0a1230" />
+        <rect x="370" y="60" width="40" height="60" fill="#0a1230" />
         <rect x="420" y="15" width="50" height="105" fill="#0a1230" />
-        <rect x="480" y="50" width="45" height="170" fill="#0a1230" />
-        <rect x="535" y="25" width="55" height="195" fill="#0a1230" />
-        <rect x="600" y="40" width="40" height="180" fill="#0a1230" />
-        <rect x="650" y="10" width="60" height="210" fill="#0a1230" />
-        <rect x="720" y="50" width="45" height="170" fill="#0a1230" />
-        <rect x="775" y="35" width="25" height="185" fill="#0a1230" />
+        <rect x="480" y="50" width="45" height="70" fill="#0a1230" />
+        <rect x="535" y="25" width="55" height="95" fill="#0a1230" />
+        <rect x="600" y="40" width="40" height="80" fill="#0a1230" />
+        <rect x="650" y="10" width="60" height="110" fill="#0a1230" />
+        <rect x="720" y="50" width="45" height="70" fill="#0a1230" />
+        <rect x="775" y="35" width="25" height="85" fill="#0a1230" />
       </svg>
     </div>
   );
